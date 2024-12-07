@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for comfyui-with-flux-falling-leaf-5124 on 2024-12-07T09:04:27+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'comfyui-with-flux-falling-leaf-5124'
+primary_region = 'ord'
+
+[build]
+  dockerfile = 'comfyui-flux-s3/Dockerfile'
+
+[[mounts]]
+  source = 'models'
+  destination = '/ComfyUI/models'
+  initial_size = '100gb'
+
+[http_service]
+  internal_port = 8188
+  force_https = true
+  auto_stop_machines = 'suspend'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.http_options]
+    idle_timeout = 600
+
+[[vm]]
+  size = 'l40s'
