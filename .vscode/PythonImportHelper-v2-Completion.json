@@ -1,0 +1,304 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "UnidentifiedImageError",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "AutoProcessor",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "caption_images",
+        "kind": 2,
+        "importPath": "comfyui-without-flux.ai-toolkit.caption_images",
+        "description": "comfyui-without-flux.ai-toolkit.caption_images",
+        "peekOfCode": "def caption_images(directory, caption_prefix):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    torch_dtype = torch.float16\n    model = AutoModelForCausalLM.from_pretrained(\n        \"multimodalart/Florence-2-large-no-flash-attn\", torch_dtype=torch_dtype, trust_remote_code=True\n    ).to(device)\n    processor = AutoProcessor.from_pretrained(\"multimodalart/Florence-2-large-no-flash-attn\", trust_remote_code=True)\n    for filename in os.listdir(directory):\n        if filename.endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):\n            image_path = os.path.join(directory, filename)",
+        "detail": "comfyui-without-flux.ai-toolkit.caption_images",
+        "documentation": {}
+    },
+    {
+        "label": "CAPTION_PROMPT",
+        "kind": 5,
+        "importPath": "comfyui-without-flux.ai-toolkit.caption_images",
+        "description": "comfyui-without-flux.ai-toolkit.caption_images",
+        "peekOfCode": "CAPTION_PROMPT = '''<MORE_DETAILED_CAPTION>'''\ndef caption_images(directory, caption_prefix):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    torch_dtype = torch.float16\n    model = AutoModelForCausalLM.from_pretrained(\n        \"multimodalart/Florence-2-large-no-flash-attn\", torch_dtype=torch_dtype, trust_remote_code=True\n    ).to(device)\n    processor = AutoProcessor.from_pretrained(\"multimodalart/Florence-2-large-no-flash-attn\", trust_remote_code=True)\n    for filename in os.listdir(directory):\n        if filename.endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):",
+        "detail": "comfyui-without-flux.ai-toolkit.caption_images",
+        "documentation": {}
+    },
+    {
+        "label": "json_string",
+        "kind": 5,
+        "importPath": "comfyui-without-flux.replaceDefaultGraph",
+        "description": "comfyui-without-flux.replaceDefaultGraph",
+        "peekOfCode": "json_string = json.dumps(json_data)\nprint(\"JSON String:\", json_string)  # Debug print\n# Pattern to be located\npattern = r'const defaultGraph = \\{.*?\\};'\nreplacement = f'const defaultGraph = {json_string};'\n# Search for JavaScript files in the directory\nfor filename in glob.glob('/ComfyUI/web/assets/index-*.js'):\n    # Load the JavaScript file with UTF-8 encoding\n    with open(filename, 'r', encoding='utf-8') as js_file:\n        js_data = js_file.read()",
+        "detail": "comfyui-without-flux.replaceDefaultGraph",
+        "documentation": {}
+    },
+    {
+        "label": "pattern",
+        "kind": 5,
+        "importPath": "comfyui-without-flux.replaceDefaultGraph",
+        "description": "comfyui-without-flux.replaceDefaultGraph",
+        "peekOfCode": "pattern = r'const defaultGraph = \\{.*?\\};'\nreplacement = f'const defaultGraph = {json_string};'\n# Search for JavaScript files in the directory\nfor filename in glob.glob('/ComfyUI/web/assets/index-*.js'):\n    # Load the JavaScript file with UTF-8 encoding\n    with open(filename, 'r', encoding='utf-8') as js_file:\n        js_data = js_file.read()\n    # Locate the defaultGraph dictionary and replace it with the JSON string\n    matches = re.findall(pattern, js_data, flags=re.DOTALL)\n    print(\"Matches found in\", filename, \":\", matches)  # Debug print",
+        "detail": "comfyui-without-flux.replaceDefaultGraph",
+        "documentation": {}
+    },
+    {
+        "label": "replacement",
+        "kind": 5,
+        "importPath": "comfyui-without-flux.replaceDefaultGraph",
+        "description": "comfyui-without-flux.replaceDefaultGraph",
+        "peekOfCode": "replacement = f'const defaultGraph = {json_string};'\n# Search for JavaScript files in the directory\nfor filename in glob.glob('/ComfyUI/web/assets/index-*.js'):\n    # Load the JavaScript file with UTF-8 encoding\n    with open(filename, 'r', encoding='utf-8') as js_file:\n        js_data = js_file.read()\n    # Locate the defaultGraph dictionary and replace it with the JSON string\n    matches = re.findall(pattern, js_data, flags=re.DOTALL)\n    print(\"Matches found in\", filename, \":\", matches)  # Debug print\n    if matches:",
+        "detail": "comfyui-without-flux.replaceDefaultGraph",
+        "documentation": {}
+    },
+    {
+        "label": "queue_prompt",
+        "kind": 2,
+        "importPath": "examples.api_example",
+        "description": "examples.api_example",
+        "peekOfCode": "def queue_prompt(url, prompt):\n    p = {\"prompt\": prompt}\n    data = json.dumps(p).encode('utf-8')\n    prompt_url = f\"{url}/prompt\"\n    try:\n        r = requests.post(prompt_url, data=data)\n        r.raise_for_status()\n        return r.json()\n    except requests.exceptions.RequestException as ex:\n        print(f'POST {prompt_url} failed: {ex}')",
+        "detail": "examples.api_example",
+        "documentation": {}
+    },
+    {
+        "label": "get_queue",
+        "kind": 2,
+        "importPath": "examples.api_example",
+        "description": "examples.api_example",
+        "peekOfCode": "def get_queue(url):\n    queue_url = f\"{url}/queue\"\n    try:\n        r = requests.get(queue_url)\n        r.raise_for_status()\n        return r.json()\n    except requests.exceptions.RequestException as ex:\n        print(f'GET {queue_url} failed: {ex}')\n        return None\ndef get_history(url, prompt_id):",
+        "detail": "examples.api_example",
+        "documentation": {}
+    },
+    {
+        "label": "get_history",
+        "kind": 2,
+        "importPath": "examples.api_example",
+        "description": "examples.api_example",
+        "peekOfCode": "def get_history(url, prompt_id):\n    history_url = f\"{url}/history/{prompt_id}\"\n    try:\n        r = requests.get(history_url)\n        r.raise_for_status()\n        return r.json()\n    except requests.exceptions.RequestException as ex:\n        print(f'GET {history_url} failed: {ex}')\n        return None\ndef main(ip, port, filepath, prompt=None):",
+        "detail": "examples.api_example",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "examples.api_example",
+        "description": "examples.api_example",
+        "peekOfCode": "def main(ip, port, filepath, prompt=None):\n    url = f\"http://{ip}:{port}\"\n    with open(filepath, 'r') as file:\n        prompt_text = json.load(file)\n    # Print the prompt text, either change the text here or in the JSON file\n    if prompt is not None:\n        prompt_text[\"6\"][\"inputs\"][\"text\"] = prompt\n    print(f'Prompt: {prompt_text[\"6\"][\"inputs\"][\"text\"]}')\n    # Set the seed for our KSampler node, always generate a new seed\n    prompt_text[\"25\"][\"inputs\"][\"noise_seed\"] = random.randint(0, 1000000000000000)",
+        "detail": "examples.api_example",
+        "documentation": {}
+    },
+    {
+        "label": "docker_command",
+        "kind": 2,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "def docker_command(command):\n    try:\n        logger.info(f\"Running docker command: {command}\")\n        subprocess.check_call(command, shell=True)\n    except subprocess.CalledProcessError as e:\n        logger.error(f\"Got error while executing docker command: {e}\")\n        raise\n    except Exception as e:\n        raise e\ndef build(docker_repo, tag, from_docker=None):",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "build",
+        "kind": 2,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "def build(docker_repo, tag, from_docker=None):\n    docker_container = f\"{username}/{docker_repo}:{tag}\"\n    logger.info(f\"Building and pushing {docker_container}\")\n    docker_build_arg = f\"--progress=plain -t {docker_container}\"\n    if from_docker is not None:\n        docker_build_arg += f\" --build-arg DOCKER_FROM={from_docker}\"\n    build_command = f\"docker build {docker_build_arg} {dockerLLM_dir}/{docker_repo}\"\n    push_command = f\"docker push {docker_container}\"\n    docker_command(build_command)\n    docker_command(push_command)",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "tag",
+        "kind": 2,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "def tag(source_container, target_container):\n    tag_command = f\"docker tag {source_container} {target_container}\"\n    docker_command(tag_command)\n    docker_command(f\"docker push {target_container}\")\ntry:\n    container = build(args.docker, args.tag)\n    logger.info(f\"Successfully built and pushed the container to {container}\")\n    if args.latest:\n        latest = f\"{username}/{args.docker}:latest\"\n        tag(container, latest)",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "today_tag",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "today_tag = datetime.datetime.now().strftime(\"%d%m%Y\")\n# Creating argparse parser\nparser = argparse.ArgumentParser(description=\"Build Dockerfile\")\nparser.add_argument('docker', type=str, help='Name of the Dockerfile to build - should match a folder name in this repo')\nparser.add_argument('--username', type=str, default=\"valyriantech\", help=f\"Tag to use. Defaults to today's date: valyriantech\")\nparser.add_argument('--tag', type=str, default=today_tag, help=f\"Tag to use. Defaults to today's date: {today_tag}\")\nparser.add_argument('--latest', action=\"store_true\", help='If specified, we will also tag and push :latest')\nargs = parser.parse_args()\nlogger = logging.getLogger()\nlogging.basicConfig(",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "parser",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "parser = argparse.ArgumentParser(description=\"Build Dockerfile\")\nparser.add_argument('docker', type=str, help='Name of the Dockerfile to build - should match a folder name in this repo')\nparser.add_argument('--username', type=str, default=\"valyriantech\", help=f\"Tag to use. Defaults to today's date: valyriantech\")\nparser.add_argument('--tag', type=str, default=today_tag, help=f\"Tag to use. Defaults to today's date: {today_tag}\")\nparser.add_argument('--latest', action=\"store_true\", help='If specified, we will also tag and push :latest')\nargs = parser.parse_args()\nlogger = logging.getLogger()\nlogging.basicConfig(\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\", level=logging.INFO, datefmt=\"%Y-%m-%d %H:%M:%S\"\n)",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "args = parser.parse_args()\nlogger = logging.getLogger()\nlogging.basicConfig(\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\", level=logging.INFO, datefmt=\"%Y-%m-%d %H:%M:%S\"\n)\ndockerLLM_dir = os.path.dirname(os.path.realpath(__file__))\nusername = args.username\ndef docker_command(command):\n    try:\n        logger.info(f\"Running docker command: {command}\")",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "logger = logging.getLogger()\nlogging.basicConfig(\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\", level=logging.INFO, datefmt=\"%Y-%m-%d %H:%M:%S\"\n)\ndockerLLM_dir = os.path.dirname(os.path.realpath(__file__))\nusername = args.username\ndef docker_command(command):\n    try:\n        logger.info(f\"Running docker command: {command}\")\n        subprocess.check_call(command, shell=True)",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "dockerLLM_dir",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "dockerLLM_dir = os.path.dirname(os.path.realpath(__file__))\nusername = args.username\ndef docker_command(command):\n    try:\n        logger.info(f\"Running docker command: {command}\")\n        subprocess.check_call(command, shell=True)\n    except subprocess.CalledProcessError as e:\n        logger.error(f\"Got error while executing docker command: {e}\")\n        raise\n    except Exception as e:",
+        "detail": "build_docker",
+        "documentation": {}
+    },
+    {
+        "label": "username",
+        "kind": 5,
+        "importPath": "build_docker",
+        "description": "build_docker",
+        "peekOfCode": "username = args.username\ndef docker_command(command):\n    try:\n        logger.info(f\"Running docker command: {command}\")\n        subprocess.check_call(command, shell=True)\n    except subprocess.CalledProcessError as e:\n        logger.error(f\"Got error while executing docker command: {e}\")\n        raise\n    except Exception as e:\n        raise e",
+        "detail": "build_docker",
+        "documentation": {}
+    }
+]
