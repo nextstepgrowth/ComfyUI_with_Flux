@@ -16,21 +16,16 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # AWS CLI 버전 확인
 RUN aws --version
 
-ARG AWS_ACCESS_KEY_ID
-ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-
-ARG AWS_SECRET_ACCESS_KEY
-ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-
-ARG AWS_REGION
-ENV AWS_REGION=${AWS_REGION}
-
-ARG S3_BUCKET
-ENV S3_BUCKET=${S3_BUCKET}
-
 # 마운트 스크립트 복사
-COPY comfyui-flux-s3/mount_s3.sh /scripts/mount_s3.sh
-RUN chmod +x /scripts/mount_s3.sh
-RUN "/scripts/mount_s3.sh"
+COPY comfyui-flux-s3/sync_s3.sh /sync_s3.sh
+RUN chmod +x /sync_s3.sh
 
-CMD ["/start.sh"]
+# 커스텀 노드 설치 스크립트 복사
+COPY comfyui-flux-s3/install_custom_nodes.sh /install_custom_nodes.sh
+RUN chmod +x /install_custom_nodes.sh
+
+# 시작 스크립트 복사
+COPY comfyui-flux-s3/custom_start.sh /custom_start.sh
+RUN chmod +x /custom_start.sh
+
+CMD ["/custom_start.sh"]
