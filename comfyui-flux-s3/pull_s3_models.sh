@@ -7,4 +7,4 @@ fi
 aws configure set default.s3.max_concurrent_requests 100
 
 echo "Pull models from: s3://$S3_BUCKET/models"
-aws s3 sync s3://$S3_BUCKET/models $MOUNT_MODELS --exact-timestamps  &> sync.log &
+aws s3 sync s3://$S3_BUCKET/models $MOUNT_MODELS --exact-timestamps  --exclude "*/Florence/*"  &> sync_pull.log &

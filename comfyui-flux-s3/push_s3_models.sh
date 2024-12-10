@@ -7,4 +7,4 @@ fi
 
 echo "Push models from: s3://$S3_BUCKET/models"
 
-aws s3 sync $MOUNT_MODELS s3://$S3_BUCKET/models --exact-timestamps
+aws s3 sync $MOUNT_MODELS s3://$S3_BUCKET/models --exact-timestamps  --exclude "*/Florence/*"
