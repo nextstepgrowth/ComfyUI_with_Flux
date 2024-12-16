@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for comfyui-gpu-server on 2024-12-12T20:07:03+09:00
+# fly.toml app configuration file generated for comfyui-aida on 2024-12-16T15:20:28+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'comfyui-gpu-server'
+app = 'comfyui-aida'
 primary_region = 'ord'
 
 [build]
@@ -15,7 +15,7 @@ primary_region = 'ord'
 [[mounts]]
   source = 'workspace'
   destination = '/workspace'
-  initial_size = '200gb'
+  initial_size = '150gb'
 
 [http_service]
   internal_port = 8188
@@ -36,4 +36,5 @@ primary_region = 'ord'
 
 [[vm]]
   size = 'l40s'
+  cpu = 'performance-16x'
   memory = '128gb'
